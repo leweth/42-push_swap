@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:06:44 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/15 19:57:48 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/16 18:22:11 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ char	**ft_split(char *str)
 	if (!str)
 		return (NULL);
 	count = count_words(str);
-	printf("%d\n", count);
 	ptr = malloc(sizeof(char **) * (count + 1));
 	if (!ptr)
 		return (NULL);

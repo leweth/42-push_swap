@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putpercent.c                                    :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 18:49:57 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/16 18:27:32 by mben-yah         ###   ########.fr       */
+/*   Created: 2024/07/16 17:58:49 by mben-yah          #+#    #+#             */
+/*   Updated: 2024/07/16 18:18:44 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "../includes/push_swap.h"
 
-int	ft_putpercent(va_list args)
+bool	ft_isdigit(int c)
 {
-	if (args)
-		write(1, "%", 1);
-	return (1);
+	if (c >= '0' && c <= '9')
+		return (true);
+	return (false);
 }

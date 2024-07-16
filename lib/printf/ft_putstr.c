@@ -6,11 +6,11 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:38:37 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/14 19:16:10 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/16 18:27:34 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../../includes/ft_printf.h"
 
 static	int	__strlen(const char *str)
 {
