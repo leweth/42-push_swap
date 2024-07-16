@@ -21,7 +21,8 @@
 
 /* Errors defintions */
 
-# define NO_PARAMETERS
+# define NO_PARAMETERS -11
+# define FAILED_MALLOC_ERR -12
 
 
 /* Struct definition */
@@ -35,5 +36,7 @@ typedef struct s_node
 int		validate_input(int argc, char **argv, t_node *a);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	**ft_split(char *str);
+void	lst_add_back(t_node **lst, t_node *node);
+
 
 #endif

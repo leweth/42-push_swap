@@ -35,3 +35,6 @@ fclean: clean
 	make -C lib/printf fclean
 
 re: fclean all
+
+test:
+	${CC} ${CFLAGS} tests/main_test.c utils/linked_lists_utils.c -o run
