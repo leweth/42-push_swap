@@ -37,4 +37,4 @@ fclean: clean
 re: fclean all
 
 test:
-	${CC} ${CFLAGS} tests/main_test.c utils/linked_lists_utils.c tests/linked_lists_libft.c -o run
+	${CC} ${CFLAGS} tests/main_test.c utils/linked_lists_utils.c utils/ft_split.c utils/ft_memcpy.c -o run

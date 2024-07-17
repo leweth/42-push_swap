@@ -6,11 +6,23 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:50:13 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/16 17:51:43 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:40:02 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+t_node *ft_lstnew(int number)
+{
+	t_node	*tmp;
+
+	tmp = (t_node *) malloc(sizeof(t_node));
+	if (!tmp)
+		return (NULL);
+	tmp->num = number;
+	tmp->next = NULL;
+	return (tmp);
+}
 
 static t_node	*ft_lstlast(t_node *lst)
 {

@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 17:52:43 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/16 18:30:58 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/17 21:45:14 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,43 @@ static bool	ft_isspace(char c)
 		return (true);
 	return (false);
 }
-static int	ft_convert(char *str, size_t *conv, size_t *i, int sign)
+
+static int	ft_convert(char *str, long long int *conv, size_t *i, int sign)
 {
 	while (ft_isdigit(str[*i]))
 	{	
 		*conv = *conv * 10 + str[(*i)++] - '0';
-		if (*conv > (size_t)INT_MAX && sign == 1)
+		// ft_printf("%i\n", *conv);
+		if (*conv > 217483647 && sign == 1)
 			return (NUMBER_EXCCED_INT_MAX);
-		else if (*conv > (size_t)INT_MAX + 1 && sign == -1)
+		else if (*conv > 217483648 && sign == -1)
 			return (NUMBER_LOWER_THAN_INT_MIN);
+		
 	}
 	return (SUCCESS);
 }
 
 int	ft_atoi(char *str, int *err)
 {
-	size_t	i;
-	size_t	conv;
-	int		sign;
+	size_t			i;
+	long long int	conv;
+	int				sign;
 
 	i = 0;
-	sign = 1;
 	conv = 0;
 	while (ft_isspace(str[i]))
 		i++;
+	sign = (str[i] == '-') * (-1) + (str[i] == '+'); 
 	if (str[i] == '+' || str[i] == '-')
-		if (str[i] == '-')
-		{
-			sign *= -1;
 			i++;
-		}
 	if (!ft_isdigit(str[i]))
-		*err = WRONG_NUMBER_FORMAT;
+		return (*err = WRONG_NUMBER_FORMAT, FAILURE);
+	// ft_printf("%s\n", str);
+	// ft_printf("%d\n", conv);
 	*err = ft_convert(str, &conv, &i, sign);
+	if (*err < 0)
+		return (FAILURE);
 	if (str[i] && !ft_isdigit(str[i]))
-		*err = WRONG_NUMBER_FORMAT;
+		return (*err = WRONG_NUMBER_FORMAT, FAILURE);
 	return (conv * sign);
 }

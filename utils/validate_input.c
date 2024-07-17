@@ -6,41 +6,82 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:06:50 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/16 18:31:46 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/17 21:45:27 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// static void	clean_strs(char **str)
-// {
-// 	while (*str)
-// 	{	
-// 		free(*(str));
-// 		*str = NULL;
-// 		str++;
-// 	}
-// 	free(str);
-// }
-
-int	validate_input(int argc, char **argv, t_node *a)
+static void	clean_strs(char ***strs)
 {
-	int		err; // this will be passed to atoi as a param since we can't have it return the errors
-	// int		i;
-	// char	**str;
+	char	**ptrs;
+	int		i;
 
-	(void) a;
+	i = 0;
+	ptrs = *strs;
+	while (ptrs[i])
+	{	
+		free(ptrs[i]);
+		ptrs[i] = NULL;
+		i++;
+	}
+	free(ptrs);
+	strs = NULL;
+}
+
+static bool	is_duplicate(t_node **a, int number)
+{
+	t_node	*pass;
+
+	pass = *a;
+	while (pass)
+	{
+		if (pass->num == number)
+			return (true);
+		pass = pass->next;
+	}
+	return (false);
+}
+
+int	validate_input(int argc, char **argv, t_node **a)
+{
+	int		err;
+	int		i;
+	char	**strs;
+	t_node	*node;
+	int		j;
+	int		num;
+
 	err = 0;
 	if (argc == 1)
-		return (NO_PARAMETERS);
-	/* i = 1;
+		return (err = NO_PARAMETERS, err);
+	i = 1;
 	while (i < argc)
 	{
-		str = ft_split(argv[i]);
-		if (!str)
+		strs = ft_split(argv[i]);
+		// for (int a = 0; strs[a]; a++)
+		// 	ft_printf("%s\n", strs[a]);
+		if (!strs)
 			return (FAILED_MALLOC_ERR);
-		// loo throught the array of pointers, apply atoi, if it fails free all linkedlists before and all the strs for sure
-	} */
-	ft_printf("%d\n", ft_atoi(argv[1], &err));
-	return (err);
+		if (!(*strs))
+			return (ft_lstclear(a), free(strs), strs= NULL, EMPTY_PARAMETERS);
+		j = 0;
+		while (strs[j])
+		{
+			num = ft_atoi(strs[j], &err);
+			ft_printf("%d\n", num);
+			if (err < 0)
+				return (clean_strs(&strs), ft_lstclear(a), err);
+			if (is_duplicate(a, num))
+				return (err = DUPLICATE_FOUND, clean_strs(&strs), ft_lstclear(a), err);				
+			node = ft_lstnew(num);
+			if (!node)
+				return (err = FAILED_MALLOC_ERR, clean_strs(&strs), ft_lstclear(a), err);
+			ft_lstadd_back(a, node);
+			j++;
+		}
+		clean_strs(&strs);
+		i++;
+	}
+	return (SUCCESS);
 }

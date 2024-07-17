@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
-#include "test.h"
+// #include "test.h"
 
 void leaks_check()
 {
@@ -39,9 +39,15 @@ int main()
 	// while (1)
 	// 	;
 	
-	t_list	*node = ft_lstnew("yo");
+	/* t_list	*node = ft_lstnew("yo");
 
 	printf("|%s|\n", node->data);
 	free(node);
+	printf("-------------------------------------------------------\n"); */
+
+
+	char	**str = ft_split("");
+	printf("%s\n", *str);
+	free(str);
 	printf("-------------------------------------------------------\n");
 }
