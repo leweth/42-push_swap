@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:36 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/17 19:46:56 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:39:49 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@
 
 /* Errors defintions */
 
-# define EMPTY_PARAMETERS -10
-# define NO_PARAMETERS -11
-# define WRONG_NUMBER_FORMAT -12
-# define NUMBER_EXCCED_INT_MAX -13
-# define NUMBER_LOWER_THAN_INT_MIN -14
-# define DUPLICATE_FOUND -15
+# define EMPTY_PARAMETERS -11
+# define NO_PARAMETERS -12
+# define WRONG_NUMBER_FORMAT -13
+# define NUMBER_EXCCED_INT_MAX -14
+# define NUMBER_LOWER_THAN_INT_MIN -15
+# define DUPLICATE_FOUND -16
+# define ALREADY_SORTED -17
 # define FAILED_MALLOC_ERR -21
 
 /* Struct definition */

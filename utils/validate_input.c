@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:06:50 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/17 21:45:27 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:55:14 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,25 @@ static bool	is_duplicate(t_node **a, int number)
 	return (false);
 }
 
+static bool	is_sorted(t_node **a)
+{
+	int		prev;
+	t_node	*pass;
+
+	if (!a || !(*a))
+		return (true);
+	pass = *a;
+	prev = pass->num;
+	while (pass)
+	{
+		if (pass->num < prev)
+			return (false);
+		prev = pass->num;
+		pass = pass->next;
+	}
+	return (true);
+}
+
 int	validate_input(int argc, char **argv, t_node **a)
 {
 	int		err;
@@ -60,7 +79,7 @@ int	validate_input(int argc, char **argv, t_node **a)
 	{
 		strs = ft_split(argv[i]);
 		// for (int a = 0; strs[a]; a++)
-		// 	ft_printf("%s\n", strs[a]);
+		// 	ft_printf("|%s|\n", strs[a]);
 		if (!strs)
 			return (FAILED_MALLOC_ERR);
 		if (!(*strs))
@@ -69,7 +88,7 @@ int	validate_input(int argc, char **argv, t_node **a)
 		while (strs[j])
 		{
 			num = ft_atoi(strs[j], &err);
-			ft_printf("%d\n", num);
+			// ft_printf("The number  after atoi: %d\n", num);
 			if (err < 0)
 				return (clean_strs(&strs), ft_lstclear(a), err);
 			if (is_duplicate(a, num))
@@ -83,5 +102,7 @@ int	validate_input(int argc, char **argv, t_node **a)
 		clean_strs(&strs);
 		i++;
 	}
+	if (is_sorted(a))
+		return (ft_lstclear(a), ALREADY_SORTED);
 	return (SUCCESS);
 }
