@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:36 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/18 10:39:49 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:40:33 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,16 @@ int		validate_input(int argc, char **argv, t_node **a);
 /* Linked lists functions */
 
 t_node *ft_lstnew(int number);
+t_node	*ft_lstlast(t_node *lst);
+void	ft_lstadd_front(t_node **lst, t_node *new);
 void	ft_lstadd_back(t_node **lst, t_node *node);
 void	ft_lstclear(t_node **lst);
 
+/* Instructions implementaion functions */
+void	ft_swap(t_node **stack);
+void	ft_ss(t_node **a, t_node **b);
+void	ft_push(t_node **stack1, t_node **stack2);
+void	ft_rotate(t_node **stack);
+void	recursive_rotate(t_node **stack);
 
 #endif

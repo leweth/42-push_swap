@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:50:13 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/17 15:40:02 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/18 13:03:17 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_node *ft_lstnew(int number)
 	return (tmp);
 }
 
-static t_node	*ft_lstlast(t_node *lst)
+t_node	*ft_lstlast(t_node *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -56,4 +56,22 @@ void	ft_lstclear(t_node **lst)
 		*lst = NULL;
 		(*lst) = tmp;
 	}
+}
+
+void	ft_lstadd_front(t_node **lst, t_node *new)
+{
+	t_node	*node;
+
+	if (!lst || !new)
+		return ;
+	if (!(*lst))
+		*lst = new;
+	else
+	{
+		node = (*lst);
+		*lst = new;
+		new->next = node;
+	}
+	// new->next = *lst;
+	// *lst = new;
 }

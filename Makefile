@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
 SRCS = push_swap.c utils/ft_atoi.c utils/ft_memcpy.c utils/linked_lists_utils.c utils/validate_input.c \
-		utils/ft_isdigit.c utils/ft_split.c
+		utils/ft_isdigit.c utils/ft_split.c utils/instructions.c
 
 OBJS = ${SRCS:.c=.o}
 

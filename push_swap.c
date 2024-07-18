@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:27 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/18 10:39:46 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/18 16:09:47 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 {
 	atexit(leaks_check);
 	t_node	*a;
-	// t_node	*b;
+	t_node	*b;
 	int		err;
 
 	ft_printf("------------------------- START ------------------------------\n");
@@ -40,6 +40,53 @@ int main(int argc, char **argv)
 		ft_printf("%d\n", pass->num);
 		pass = pass->next;
 	}
+
+	/*  */
+	t_node	*node1 = ft_lstnew(6);
+	t_node	*node2 = ft_lstnew(7);
+	node1->next = node2;
+	b = node1;
+	/*  */
+
+	ft_printf("---------------------------\n");
+	ft_printf("After swapping the top elements of a\n");
+	ft_swap(&a);
+	t_node	*pass2;
+
+	pass2 = a;
+	while (pass2)
+	{
+		ft_printf("%d\n", pass2->num);
+		pass2 = pass2->next;
+	}
+	ft_printf("---------------------------\n");
+	ft_printf("After pushing the top element of b to a\n");
+
+	ft_push(&a, &b);
+
+	t_node	*pass3;
+
+	pass3 = a;
+	while (pass3)
+	{
+		ft_printf("%d\n", pass3->num);
+		pass3 = pass3->next;
+	}
+	ft_printf("---------------------------\n");
+
+	ft_printf("After rotation of a\n");
+
+	ft_rotate(&a);
+
+	t_node	*pass4;
+
+	pass4 = a;
+	while (pass4)
+	{
+		ft_printf("%d\n", pass4->num);
+		pass4 = pass4->next;
+	}
 	ft_printf("---------------------------\n");
 	ft_lstclear(&a);
+	ft_lstclear(&b);
 }
