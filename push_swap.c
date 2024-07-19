@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:27 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/19 21:14:51 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/19 22:49:23 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,15 @@ int main(int argc, char **argv)
 	{
 		ft_printf("%d\n", pass3->num);
 		pass3 = pass3->next;
+	}
+
+	ft_printf("how b will look like\n");
+	t_node	*stuff;
+	stuff = b;
+	while (stuff)
+	{
+		ft_printf("%d\n", stuff->num);
+		stuff = stuff->next;
 	}
 	ft_printf("---------------------------\n");
 

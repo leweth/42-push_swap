@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 10:58:08 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/19 21:04:21 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/19 22:46:31 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void	ft_ss(t_node **a, t_node **b)
 
 void	ft_push(t_node **stack1, t_node **stack2) //takes the first element at the top of stack2 and put it at the top of stack1
 {
-	int		tmp;
 	t_node	*node;
 
 	if (!stack1 || !stack2 || !(*stack2))
 		return ;
-	tmp = (*stack2)->num;
-	node = ft_lstnew(tmp);
+	node = *stack2;
+	*stack2 = node->next;
+	node->next = NULL;
 	ft_lstadd_front(stack1, node);
 }
 
