@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:36 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/18 14:40:33 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/19 21:01:00 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,8 @@ void	ft_ss(t_node **a, t_node **b);
 void	ft_push(t_node **stack1, t_node **stack2);
 void	ft_rotate(t_node **stack);
 void	recursive_rotate(t_node **stack);
+void	ft_rev_rotate(t_node **stack);
+void	ft_rr(t_node **a, t_node **b);
+void	ft_rrr(t_node **a, t_node **b);
 
 #endif

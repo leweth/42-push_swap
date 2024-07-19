@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:27 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/18 16:09:47 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/19 21:14:51 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void leaks_check()
 {
-	// system("leaks push_swap");
+	system("leaks push_swap");
 	ft_printf("------------------------- END ------------------------------\n");
 }
 
@@ -86,6 +86,19 @@ int main(int argc, char **argv)
 	{
 		ft_printf("%d\n", pass4->num);
 		pass4 = pass4->next;
+	}
+	ft_printf("---------------------------\n");
+	ft_printf("After reversing the rotation of a\n");
+
+	ft_rev_rotate(&a);
+
+	t_node	*pass5;
+
+	pass5 = a;
+	while (pass5)
+	{
+		ft_printf("%d\n", pass5->num);
+		pass5 = pass5->next;
 	}
 	ft_printf("---------------------------\n");
 	ft_lstclear(&a);

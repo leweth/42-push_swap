@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 10:58:08 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/18 13:18:59 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/19 21:04:21 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,41 @@ void	ft_rotate(t_node **stack) // [4] [5]
 	}
 	node->num = first; // [5]
 }
+
+void	ft_rr(t_node **a, t_node **b)
+{
+	ft_rotate(a);
+	ft_rotate(b);
+}
+
+void	ft_rev_rotate(t_node **stack)
+{
+	t_node	*node;
+	t_node	*first_node;
+	int		tmp;
+	int		prv;
+
+	if (!stack || !(*stack))
+		return ;
+	node = *stack;
+	first_node = *stack;
+	prv = first_node->num;
+	while (node->next)
+	{
+		tmp = (node->next)->num;
+		(node->next)->num = prv;
+		prv = tmp;
+		node = node->next;
+	}
+	first_node->num = prv;
+}
+
+void	ft_rrr(t_node **a, t_node **b)
+{
+	ft_rev_rotate(a);
+	ft_rev_rotate(b);
+}
+
 /* 
 int		rec(t_node	*node)
 {
