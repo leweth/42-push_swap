@@ -33,11 +33,16 @@ static bool	is_duplicate(t_node **a, int number)
 {
 	t_node	*pass;
 
+	if (!a)
+		return (false);
 	pass = *a;
 	while (pass)
 	{
+		// ft_printf("pass->num: %d\n", pass->num);
+		// ft_printf("number: %d\n", number);
 		if (pass->num == number)
 			return (true);
+	// ft_printf("DAZ?\n");
 		pass = pass->next;
 	}
 	return (false);
@@ -87,12 +92,15 @@ int	validate_input(int argc, char **argv, t_node **a)
 		j = 0;
 		while (strs[j])
 		{
+		// ft_printf("dfjsdkjfd------1\n");
 			num = ft_atoi(strs[j], &err);
 			// ft_printf("The number  after atoi: %d\n", num);
 			if (err < 0)
-				return (clean_strs(&strs), ft_lstclear(a), err);
+		 		return (clean_strs(&strs), ft_lstclear(a), err);
+		// ft_printf("dfjsdkjfd------2\n");
 			if (is_duplicate(a, num))
 				return (err = DUPLICATE_FOUND, clean_strs(&strs), ft_lstclear(a), err);				
+		// ft_printf("dfjsdkjfd------3\n");
 			node = ft_lstnew(num);
 			if (!node)
 				return (err = FAILED_MALLOC_ERR, clean_strs(&strs), ft_lstclear(a), err);

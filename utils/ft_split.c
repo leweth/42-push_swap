@@ -53,11 +53,9 @@ static int	ft_fill(char **ptr, char *str, int count)
 {
 	int	i;
 	int	a;
-	int	len;
 
 	a = 0;
 	i = 0;
-	len = 0;
 	while (str[i])
 	{
 		while (ft_isspace(str[i]))

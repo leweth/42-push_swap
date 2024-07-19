@@ -43,26 +43,28 @@ void	ft_push(t_node **stack1, t_node **stack2) //takes the first element at the 
 	ft_lstadd_front(stack1, node);
 }
 
-void	ft_rotate(t_node **stack)
+void	ft_rotate(t_node **stack) // [4] [5]
 {
 	t_node	*node;
 	t_node	*first_node;
-	int		tmp;
+	int		first;
 
 	if (!stack || !(*stack))
 		return ;
-	node = *stack;
-	first_node = *stack;
-	tmp = first_node->num;
-	while (node->next)
+	node = *stack; // [6]
+	first_node = *stack; // [6]
+	first = first_node->num; // 6
+	while (node->next) // [4] [NULL]
 	{
-		tmp = (node->next)->num;
-		(node->next)->num = node->num;
-		node = node->next;
+		// ft_printf("node's address: %p. The assosciated number: %d\n", node, node->num);
+		// ft_printf("next node's address: %p. The assosciated number: %d\n", node->next, (node->next)->num);
+		// ft_printf("%d\n", tmp);
+		node->num = (node->next)->num;
+		node = node->next; // [5]
 	}
-	first_node->num = tmp;
+	node->num = first; // [5]
 }
-
+/* 
 int		rec(t_node	*node)
 {
 	int	tmp;
@@ -85,3 +87,4 @@ void	recursive_rotate(t_node **stack)
 	ret = rec(node);
 	node->num = ret;
 }
+ */

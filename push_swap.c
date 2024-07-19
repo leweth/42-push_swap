@@ -14,7 +14,7 @@
 
 void leaks_check()
 {
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	ft_printf("------------------------- END ------------------------------\n");
 }
 
@@ -25,6 +25,7 @@ int main(int argc, char **argv)
 	t_node	*b;
 	int		err;
 
+	a = NULL;
 	ft_printf("------------------------- START ------------------------------\n");
 	err = validate_input(argc, argv, &a);
 	if (err == NO_PARAMETERS || err == ALREADY_SORTED)
