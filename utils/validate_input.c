@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:06:50 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/18 11:53:30 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/20 15:26:16 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static bool	is_sorted(t_node **a)
 	return (true);
 }
 
-int	validate_input(int argc, char **argv, t_node **a)
+int	validate_input(int argc, char **argv, t_stack *stack)
 {
 	int		err;
 	int		i;
@@ -88,7 +88,7 @@ int	validate_input(int argc, char **argv, t_node **a)
 		if (!strs)
 			return (FAILED_MALLOC_ERR);
 		if (!(*strs))
-			return (ft_lstclear(a), free(strs), strs= NULL, EMPTY_PARAMETERS);
+			return (ft_lstclear(&(stack->top)), free(strs), strs= NULL, EMPTY_PARAMETERS);
 		j = 0;
 		while (strs[j])
 		{
@@ -96,21 +96,22 @@ int	validate_input(int argc, char **argv, t_node **a)
 			num = ft_atoi(strs[j], &err);
 			// ft_printf("The number  after atoi: %d\n", num);
 			if (err < 0)
-		 		return (clean_strs(&strs), ft_lstclear(a), err);
+		 		return (clean_strs(&strs), ft_lstclear(&(stack->top)), err);
 		// ft_printf("dfjsdkjfd------2\n");
-			if (is_duplicate(a, num))
-				return (err = DUPLICATE_FOUND, clean_strs(&strs), ft_lstclear(a), err);				
+			if (is_duplicate(&(stack->top), num))
+				return (err = DUPLICATE_FOUND, clean_strs(&strs), ft_lstclear(&(stack->top)), err);				
 		// ft_printf("dfjsdkjfd------3\n");
 			node = ft_lstnew(num);
 			if (!node)
-				return (err = FAILED_MALLOC_ERR, clean_strs(&strs), ft_lstclear(a), err);
-			ft_lstadd_back(a, node);
+				return (err = FAILED_MALLOC_ERR, clean_strs(&strs), ft_lstclear(&(stack->top)), err);
+			ft_lstadd_back(&(stack->top), node);
+			(stack->size)++;
 			j++;
 		}
 		clean_strs(&strs);
 		i++;
 	}
-	if (is_sorted(a))
-		return (ft_lstclear(a), ALREADY_SORTED);
+	if (is_sorted(&(stack->top)))
+		return (ft_lstclear(&(stack->top)), ALREADY_SORTED);
 	return (SUCCESS);
 }

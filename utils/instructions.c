@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -12,47 +13,58 @@
 
 #include "../includes/push_swap.h"
 
-void	ft_swap(t_node **stack)
+void	ft_swap(t_stack *stack)
 {
 	t_node	*node;
 	int		tmp;
 
-	if (!stack || !(*stack))
+	if (!stack || !(stack->top))
 		return ;
-	node = *stack;
+	node = stack->top;
 	tmp = node->num;
 	node->num = (node->next)->num;
 	(node->next)->num = tmp;
+	if (stack->type == A)
+		ft_printf("sa\n");
+	if (stack->type == B)
+		ft_printf("sb\n");
 }
 
-void	ft_ss(t_node **a, t_node **b)
+void	ft_ss(t_stack *a, t_stack *b)
 {
 	ft_swap(a);
 	ft_swap(b);
+	ft_printf("ss\n");
 }
 
-void	ft_push(t_node **stack1, t_node **stack2) //takes the first element at the top of stack2 and put it at the top of stack1
+void	ft_push(t_stack *stack1, t_stack *stack2) //takes the first element at the top of stack2 and put it at the top of stack1
 {
 	t_node	*node;
 
-	if (!stack1 || !stack2 || !(*stack2))
+	if (!stack1 || !stack2 || !stack2->top)
 		return ;
-	node = *stack2;
-	*stack2 = node->next;
+	node = stack2->top;
+	stack2->top = node->next;
 	node->next = NULL;
-	ft_lstadd_front(stack1, node);
+	ft_lstadd_front(&stack1->top, node);
+	stack1->size++;
+	stack2->size--;
+	if (stack1->type == A)
+		ft_printf("pa\n");
+	if (stack1->type == B)
+		ft_printf("pb\n");
 }
 
-void	ft_rotate(t_node **stack) // [4] [5]
+void	ft_rotate(t_stack *stack) // [4] [5]
 {
 	t_node	*node;
 	t_node	*first_node;
 	int		first;
 
-	if (!stack || !(*stack))
+	if (!stack || !stack->top)
 		return ;
-	node = *stack; // [6]
-	first_node = *stack; // [6]
+	node = stack->top; // [6]
+	first_node = stack->top; // [6]
 	first = first_node->num; // 6
 	while (node->next) // [4] [NULL]
 	{
@@ -63,25 +75,30 @@ void	ft_rotate(t_node **stack) // [4] [5]
 		node = node->next; // [5]
 	}
 	node->num = first; // [5]
+	if (stack->type == A)
+		ft_printf("ra\n");
+	if (stack->type == B)
+		ft_printf("rb\n");
 }
 
-void	ft_rr(t_node **a, t_node **b)
+void	ft_rr(t_stack *a, t_stack *b)
 {
 	ft_rotate(a);
 	ft_rotate(b);
+	ft_printf("rr\n");
 }
 
-void	ft_rev_rotate(t_node **stack)
+void	ft_rev_rotate(t_stack *stack)
 {
 	t_node	*node;
 	t_node	*first_node;
 	int		tmp;
 	int		prv;
 
-	if (!stack || !(*stack))
+	if (!stack || !(stack->top))
 		return ;
-	node = *stack;
-	first_node = *stack;
+	node = stack->top;
+	first_node = stack->top;
 	prv = first_node->num;
 	while (node->next)
 	{
@@ -91,12 +108,17 @@ void	ft_rev_rotate(t_node **stack)
 		node = node->next;
 	}
 	first_node->num = prv;
+	if (stack->type == A)
+		ft_printf("rra\n");
+	if (stack->type == B)
+		ft_printf("rrb\n");
 }
 
-void	ft_rrr(t_node **a, t_node **b)
+void	ft_rrr(t_stack *a, t_stack *b)
 {
 	ft_rev_rotate(a);
 	ft_rev_rotate(b);
+	ft_printf("rrr\n");
 }
 
 /* 
