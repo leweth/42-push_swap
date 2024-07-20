@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:27 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/20 20:33:27 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/20 20:46:31 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ int main(int argc, char **argv)
 	int min;
 	int pos = ft_min(&a, &min);
 	ft_printf("min1 = |%d|\nposition = |%d|\n", min, pos);
-	set_in_top(&a, min);
+	set_in_top(&a, pos);
 
 	t_node	*pass7;
 	pass7 = a.top;

@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:45:29 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/20 20:34:18 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/20 20:46:41 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ void set_in_top(t_stack	*stack, int pos) // it should take the min
 	{
 		iters = 2;
 		while (iters--)
-			ft_rev_rotate(stack);
+			ft_rotate(stack);
 	}
 	else
 	{
 		iters = stack->size - pos;
-		while (pos--)
-			ft_rotate(stack);
+		while (iters--)
+			ft_rev_rotate(stack);
 	}
 }
 
