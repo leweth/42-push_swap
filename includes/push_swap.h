@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:36 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/20 20:31:29 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:46:55 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # define SUCCESS 0
 # define FAILURE -1
+# define NONE -99
 
 /* STack names */
 
@@ -41,6 +42,7 @@
 typedef struct s_node
 {
 	int				num;
+	unsigned int	index;
 	struct s_node	*next;
 } t_node;
 
@@ -77,12 +79,16 @@ void	ft_rev_rotate(t_stack *stack);
 void	ft_rr(t_stack *a, t_stack *b);
 void	ft_rrr(t_stack *a, t_stack *b);
 
+/* Indexing utils */
+void	index_stack(t_stack *stack);
+
 /* Sort utils */
 void	ft_sort(t_stack *a, t_stack *b);
 // void	mins_of_stack(t_stack *stack, int *min1, int *min2);
-void 	ft_sort_more(t_stack *stack);
-void 	set_in_top(t_stack	*stack, int pos);
+void ft_sort_more(t_stack *a, t_stack *b);
 int		ft_min(t_stack *stack, int *min);
 void	ft_sort_five(t_stack *a, t_stack *b);
+void	ft_range(t_stack *a, t_stack *b);
+void	set_in_top(t_stack	*stack, unsigned int pos);
 
 #endif

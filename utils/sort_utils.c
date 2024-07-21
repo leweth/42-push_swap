@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:45:29 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/20 20:46:41 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/21 12:02:54 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int check_case(t_node *node1, t_node *node2, t_node *node3)
 int	ft_min(t_stack *stack, int *min)
 {
 	t_node	*pass;
-	int		pos;
+	unsigned int		pos;
 	int		iters;
 
 	pass = stack->top;
@@ -68,11 +68,11 @@ static int	get_position(t_node *node, int number)
 	return (FAILURE);
 } */
 
-void set_in_top(t_stack	*stack, int pos) // it should take the min
+void set_in_top(t_stack	*stack, unsigned int pos) // it should take the min
 {
-	int	iters;
+	unsigned int	iters;
 
-	if (pos <= 2)
+	if (pos <= stack->size / 2)
 	{
 		while (pos--)
 			ft_rotate(stack);
@@ -114,8 +114,7 @@ static void	ft_sort_three(t_stack *stack)
 	else
 		ft_swap(stack);
 }
-#include <stdlib.h>
-#include <unistd.h>
+
 void ft_sort_five(t_stack *a, t_stack *b)
 {
 	int	min;
@@ -123,7 +122,6 @@ void ft_sort_five(t_stack *a, t_stack *b)
 
 	pos = ft_min(a, &min);
 	set_in_top(a, pos);
-	sleep(5);
 	ft_push(b, a);
 	pos = ft_min(a, &min);
 	set_in_top(a, pos);
@@ -142,5 +140,5 @@ void	ft_sort(t_stack *a, t_stack *b)
 	else if (a->size == 5)
 		ft_sort_five(a, b);
 	else
-		ft_sort_more(a);
+		ft_sort_more(a, b);
 }

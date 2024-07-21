@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:50:13 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/20 15:25:39 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:45:03 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_node *ft_lstnew(int number)
 	if (!tmp)
 		return (NULL);
 	tmp->num = number;
+	tmp->index = NONE;
 	tmp->next = NULL;
 	return (tmp);
 }
