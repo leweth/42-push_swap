@@ -79,9 +79,10 @@ void	ft_rrr(t_stack *a, t_stack *b);
 
 /* Sort utils */
 void	ft_sort(t_stack *a, t_stack *b);
-void	mins_of_stack(t_stack *stack, int *min1, int *min2);
+// void	mins_of_stack(t_stack *stack, int *min1, int *min2);
 void 	ft_sort_more(t_stack *stack);
 void 	set_in_top(t_stack	*stack, int pos);
 int		ft_min(t_stack *stack, int *min);
+void	ft_sort_five(t_stack *a, t_stack *b);
 
 #endif

@@ -72,10 +72,9 @@ void set_in_top(t_stack	*stack, int pos) // it should take the min
 {
 	int	iters;
 
-	if (pos <= 2) // this wouldn't work in the case of a size 4 stack
+	if (pos <= 2)
 	{
-		iters = 2;
-		while (iters--)
+		while (pos--)
 			ft_rotate(stack);
 	}
 	else
@@ -86,17 +85,6 @@ void set_in_top(t_stack	*stack, int pos) // it should take the min
 	}
 }
 
-static void ft_sort_five(t_stack *a, t_stack *b)
-{
-	/* int	min1;
-	int	min2;
-
-	min1 = 0;
-	min2 = 0;
-	mins_of_stack(a, &min1, &min2); */
-	(void) a;
-	(void) b;
-}
 
 static void	ft_sort_three(t_stack *stack)
 {
@@ -125,6 +113,24 @@ static void	ft_sort_three(t_stack *stack)
 		ft_rev_rotate(stack);
 	else
 		ft_swap(stack);
+}
+#include <stdlib.h>
+#include <unistd.h>
+void ft_sort_five(t_stack *a, t_stack *b)
+{
+	int	min;
+	int	pos;
+
+	pos = ft_min(a, &min);
+	set_in_top(a, pos);
+	sleep(5);
+	ft_push(b, a);
+	pos = ft_min(a, &min);
+	set_in_top(a, pos);
+	ft_push(b, a);
+	ft_sort_three(a);
+	ft_push(a, b);
+	ft_push(a, b);
 }
 
 void	ft_sort(t_stack *a, t_stack *b)

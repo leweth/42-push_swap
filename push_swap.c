@@ -12,16 +12,16 @@
 
 #include "includes/push_swap.h"
 
-void leaks_check()
-{
-	ft_printf("---------------------------\n");
-	system("leaks -q push_swap");
-	ft_printf("------------------------- END ------------------------------\n");
-}
+// void leaks_check()
+// {
+// 	ft_printf("---------------------------\n");
+// 	system("leaks -q push_swap");
+// 	ft_printf("------------------------- END ------------------------------\n");
+// }
 
 int main(int argc, char **argv)
 {
-	atexit(leaks_check);
+	// atexit(leaks_check);
 	t_stack			a;
 	t_stack			b;
 	t_node			*top_a;
@@ -136,11 +136,12 @@ int main(int argc, char **argv)
 	ft_printf("The size of stack a is %u\n ", a.size);
 
 	ft_printf("---------------------------\n");
-	ft_printf("Getting the the to mins of stack a\n\n");
-	int min;
-	int pos = ft_min(&a, &min);
-	ft_printf("min1 = |%d|\nposition = |%d|\n", min, pos);
-	set_in_top(&a, pos);
+	ft_printf("Sorting a stack of 5 integers\n\n");
+	// int min;
+	// int pos = ft_min(&a, &min);
+	// ft_printf("min1 = |%d|\nposition = |%d|\n", min, pos);
+	// set_in_top(&a, pos);
+	ft_sort_five(&a, &b);
 
 	t_node	*pass7;
 	pass7 = a.top;
@@ -151,5 +152,5 @@ int main(int argc, char **argv)
 	}
 	ft_printf("The size of stack a is %u\n ", a.size);
 	ft_lstclear(&a.top);
-	ft_lstclear(&b.top);
+	// ft_lstclear(&b.top);
 }
