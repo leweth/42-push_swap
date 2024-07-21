@@ -6,22 +6,22 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:27 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/21 13:48:28 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/21 14:45:24 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-void leaks_check()
-{
-	ft_printf("---------------------------\n");
-	system("leaks -q push_swap");
-	ft_printf("------------------------- END ------------------------------\n");
-}
+// void leaks_check()
+// {
+// 	ft_printf("---------------------------\n");
+// 	system("leaks -q push_swap");
+// 	ft_printf("------------------------- END ------------------------------\n");
+// }
 
 int main(int argc, char **argv)
 {
-	atexit(leaks_check);
+	// atexit(leaks_check);
 	t_stack			a;
 	t_stack			b;
 	t_node			*top_a;
@@ -29,24 +29,25 @@ int main(int argc, char **argv)
 
 	top_a = NULL;
 	a = (t_stack) {top_a, 0, A};
-	ft_printf("------------------------- START ------------------------------\n");
+	b = (t_stack) {NULL, 0, B};
+	// ft_printf("------------------------- START ------------------------------\n");
 	err = validate_input(argc, argv, &a);
 	if (err == NO_PARAMETERS || err == ALREADY_SORTED)
 		exit(EXIT_SUCCESS);
 	if (err < 0)
 		return (ft_printf("%d\n", err), write(2, "Error\n", 6), FAILURE);
 	index_stack(&a);
-	t_node	*pass;
+	// t_node	*pass;
 
-	ft_printf("-------- The stack --------\n");
-	pass = a.top;
-	while (pass)
-	{
-		ft_printf("%d\n", pass->num);
-		// ft_printf("%d\n", pass->index);
-		pass = pass->next;
-	}
-	ft_printf("The size of stack a is %u\n ", a.size);
+	// ft_printf("-------- The stack --------\n");
+	// pass = a.top;
+	// while (pass)
+	// {
+	// 	ft_printf("%d\n", pass->num);
+	// 	// ft_printf("%d\n", pass->index);
+	// 	pass = pass->next;
+	// }
+	// ft_printf("The size of stack a is %u\n ", a.size);
 	/*
 	// ---
 	t_node	*node1 = ft_lstnew(6);
@@ -124,30 +125,30 @@ int main(int argc, char **argv)
 		pass5 = pass5->next;
 	}
 	ft_printf("The size of stack a is %u\n ", a.size); */
-	ft_printf("---------------------------\n");
-	b = (t_stack) {NULL, 0, B};
-	ft_sort(&a, &b);
-	ft_printf("After sorting the stack a\n");
+	// ft_printf("---------------------------\n");
+	// b = (t_stack) {NULL, 0, B};
+	// ft_sort(&a, &b);
+	// ft_printf("After sorting the stack a\n");
 
-	t_node	*pass6;
-	pass6 = a.top;
-	while (pass6)
-	{
-		ft_printf("%d\n", pass6->num);
-		pass6 = pass6->next;
-	}
-	ft_printf("The size of stack a is %u\n ", a.size);
+	// t_node	*pass6;
+	// pass6 = a.top;
+	// while (pass6)
+	// {
+	// 	ft_printf("%d\n", pass6->num);
+	// 	pass6 = pass6->next;
+	// }
+	// ft_printf("The size of stack a is %u\n ", a.size);
 
-	ft_printf("The structure of the stack b\n");
+	// ft_printf("The structure of the stack b\n");
 
-	t_node	*pass7;
-	pass7 = b.top;
-	while (pass7)
-	{
-		ft_printf("%d\n", pass7->num);
-		pass7 = pass7->next;
-	}
-	ft_printf("The size of stack b is %u\n ", b.size);
+	// t_node	*pass7;
+	// pass7 = b.top;
+	// while (pass7)
+	// {
+	// 	ft_printf("%d\n", pass7->num);
+	// 	pass7 = pass7->next;
+	// }
+	// ft_printf("The size of stack b is %u\n ", b.size);
 
 	// ft_printf("---------------------------\n");
 	// ft_printf("Sorting a stack of 5 integers\n\n");
@@ -165,6 +166,7 @@ int main(int argc, char **argv)
 	// 	pass7 = pass7->next;
 	// }
 	// ft_printf("The size of stack a is %u\n ", a.size);
+	ft_sort(&a, &b);
 	ft_lstclear(&a.top);
 	ft_lstclear(&b.top);
 }

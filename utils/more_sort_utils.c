@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 18:18:45 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/21 13:47:55 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/21 14:44:09 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ unsigned int	ft_max(t_stack *stack, int *max)
 	*max = (stack->top)->num;
 	pass = stack->top;
 	iters = 0;
+	pos = 0;
 	while (pass)
 	{
 		if (pass->num > *max)
@@ -92,6 +93,7 @@ unsigned int	ft_max(t_stack *stack, int *max)
 			*max = pass->num;
 			pos = iters;	
 		}
+		iters++;
 		pass = pass->next;
 	}
 	return (pos);
@@ -108,7 +110,7 @@ void	ft_range(t_stack *a, t_stack *b)
 	while (a->top)
 	{
 		index = (a->top)->index;
-		ft_printf("%d\n", index);
+		// ft_printf("%d\n", index);
 		if (index >= min && index <= max)
 		{	// push it to b
 			// update the range
@@ -130,19 +132,19 @@ void	ft_range(t_stack *a, t_stack *b)
 		}
 	}
 }
-
+#include <stdio.h>
 void ft_sort_more(t_stack *a, t_stack *b)
 {
 	int	max;
 	unsigned int	pos;
 
 	ft_range(a, b);
-	ft_printf("After applying the range on stack a\n");
-	
+	// ft_printf("After applying the range on stack a, the following is the structure of stack b\n");
 	while (b->top)
 	{
 		pos = ft_max(b, &max);
 		set_in_top(b, pos);
+		// printf("This is the top of stack b: %d\n", (b->top)->num);
 		ft_push(a, b);
 	}
 }

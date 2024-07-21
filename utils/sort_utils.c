@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:45:29 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/21 12:02:54 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/21 14:25:58 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void set_in_top(t_stack	*stack, unsigned int pos) // it should take the min
 
 	if (pos <= stack->size / 2)
 	{
-		while (pos--)
+		iters = pos;
+		while (iters--)
 			ft_rotate(stack);
 	}
 	else
