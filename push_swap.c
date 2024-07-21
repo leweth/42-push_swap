@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:27 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/21 14:45:24 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/21 17:53:04 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ int main(int argc, char **argv)
 	// atexit(leaks_check);
 	t_stack			a;
 	t_stack			b;
-	t_node			*top_a;
+	// t_node			*top_a;
 	int				err;
 
-	top_a = NULL;
-	a = (t_stack) {top_a, 0, A};
+	a = (t_stack) {NULL, 0, A};
 	b = (t_stack) {NULL, 0, B};
 	// ft_printf("------------------------- START ------------------------------\n");
 	err = validate_input(argc, argv, &a);
@@ -37,16 +36,17 @@ int main(int argc, char **argv)
 	if (err < 0)
 		return (ft_printf("%d\n", err), write(2, "Error\n", 6), FAILURE);
 	index_stack(&a);
-	// t_node	*pass;
+	t_node	*pass;
 
-	// ft_printf("-------- The stack --------\n");
-	// pass = a.top;
-	// while (pass)
-	// {
-	// 	ft_printf("%d\n", pass->num);
-	// 	// ft_printf("%d\n", pass->index);
-	// 	pass = pass->next;
-	// }
+	ft_printf("-------- The stack ----------\n");
+	pass = a.top;
+	while (pass)
+	{
+		ft_printf("number: %d  -[-]-  ", pass->num);
+		ft_printf("index: %d\n", pass->index);
+		pass = pass->next;
+	}
+	ft_printf("-----------------------------\n");
 	// ft_printf("The size of stack a is %u\n ", a.size);
 	/*
 	// ---

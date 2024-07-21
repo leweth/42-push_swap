@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 18:18:45 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/21 14:44:09 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/21 17:58:48 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,16 +101,26 @@ unsigned int	ft_max(t_stack *stack, int *max)
 
 void	ft_range(t_stack *a, t_stack *b)
 {
-	int	min;
-	int	max;
-	int	index;
+	unsigned int	min;
+	unsigned int	max;
+	unsigned int	index;
+	t_node			*travel;
 
 	min = 0;
 	max = 8;
-	while (a->top)
+	t_node	*pass = a->top;
+	while (pass)
+	{
+		ft_printf("|%d|\n", pass->num);
+		pass = pass->next;
+	}
+	ft_printf("---------------------------\n");
+	travel = a->top;
+	while (a->size)
 	{
 		index = (a->top)->index;
-		// ft_printf("%d\n", index);
+		ft_printf("Current number at the top of the stack: %d\n", (a->top)->num);
+		ft_printf("Assosciated index: %d\n", (a->top)->index);
 		if (index >= min && index <= max)
 		{	// push it to b
 			// update the range
@@ -120,9 +130,10 @@ void	ft_range(t_stack *a, t_stack *b)
 		}
 		else if (index > max)
 		{	// get it to the bottom (a simple ra I believe)
-			ft_rotate(a);
+			ft_rotate(a); ft_printf("HNA?\n");
+			// break ;
 		}
-		else if (index < min)
+		else
 		{
 			// push to b then ra to make it at the bottom
 			ft_push(b, a);
@@ -130,6 +141,14 @@ void	ft_range(t_stack *a, t_stack *b)
 			min++;
 			max++;
 		}
+	}
+	ft_printf("Current number at the top of the stack: %d\n", (a->top)->num);
+	ft_printf("Assosciated index: %d\n", (a->top)->index);
+	t_node	*pass2 = a->top;
+	while (pass2)
+	{
+		ft_printf("|%d|\n", pass2->num);
+		pass2 = pass2->next;
 	}
 }
 #include <stdio.h>

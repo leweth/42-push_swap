@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:45:29 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/21 14:25:58 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/21 16:29:45 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ static void	ft_sort_three(t_stack *stack)
 		ft_rev_rotate(stack);
 	}
 	else if (case_check == 1)
-		ft_rotate(stack);
+		{ft_rotate(stack); ft_printf("HNA?\n");}
 	else if (case_check == 2)
 	{
 		ft_rev_rotate(stack);
