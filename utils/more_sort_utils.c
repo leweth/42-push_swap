@@ -107,20 +107,20 @@ void	ft_range(t_stack *a, t_stack *b)
 	// t_node			*travel;
 
 	min = 0;
-	max = 8;
-	t_node	*pass = a->top;
-	while (pass)
-	{
-		ft_printf("|%d|\n", pass->num);
-		pass = pass->next;
-	}
-	ft_printf("---------------------------\n");
+	max = 25;
+	// t_node	*pass = a->top;
+	// while (pass)
+	// {
+	// 	ft_printf("|%d|\n", pass->num);
+	// 	pass = pass->next;
+	// }
+	// ft_printf("---------------------------\n");
 	// travel = a->top;
 	while (a->size)
 	{
 		index = (a->top)->index;
-		ft_printf("Current number at the top of the stack: %d\n", (a->top)->num);
-		ft_printf("Assosciated index: %d\n", (a->top)->index);
+		// ft_printf("Current number at the top of the stack: %d\n", (a->top)->num);
+		// ft_printf("Assosciated index: %d\n", (a->top)->index);
 		if (index >= min && index <= max)
 		{	// push it to b
 			// update the range
@@ -130,7 +130,7 @@ void	ft_range(t_stack *a, t_stack *b)
 		}
 		else if (index > max)
 		{	// get it to the bottom (a simple ra I believe)
-			ft_rotate(a); ft_printf("HNA?\n");
+			ft_rotate(a);
 			// break ;
 		}
 		else
@@ -142,14 +142,14 @@ void	ft_range(t_stack *a, t_stack *b)
 			max++;
 		}
 	}
-	ft_printf("Current number at the top of the stack: %d\n", (a->top)->num);
-	ft_printf("Assosciated index: %d\n", (a->top)->index);
-	t_node	*pass2 = a->top;
-	while (pass2)
-	{
-		ft_printf("|%d|\n", pass2->num);
-		pass2 = pass2->next;
-	}
+	// ft_printf("Current number at the top of the stack: %d\n", (a->top)->num);
+	// ft_printf("Assosciated index: %d\n", (a->top)->index);
+	// t_node	*pass2 = a->top;
+	// while (pass2)
+	// {
+	// 	ft_printf("|%d|\n", pass2->num);
+	// 	pass2 = pass2->next;
+	// }
 }
 #include <stdio.h>
 void ft_sort_more(t_stack *a, t_stack *b)

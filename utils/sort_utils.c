@@ -104,7 +104,7 @@ static void	ft_sort_three(t_stack *stack)
 		ft_rev_rotate(stack);
 	}
 	else if (case_check == 1)
-		{ft_rotate(stack); ft_printf("HNA?\n");}
+		ft_rotate(stack);
 	else if (case_check == 2)
 	{
 		ft_rev_rotate(stack);

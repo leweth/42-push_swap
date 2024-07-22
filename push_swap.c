@@ -36,17 +36,17 @@ int main(int argc, char **argv)
 	if (err < 0)
 		return (ft_printf("%d\n", err), write(2, "Error\n", 6), FAILURE);
 	index_stack(&a);
-	t_node	*pass;
+	// t_node	*pass;
 
-	ft_printf("-------- The stack ----------\n");
-	pass = a.top;
-	while (pass)
-	{
-		ft_printf("number: %d  -[-]-  ", pass->num);
-		ft_printf("index: %d\n", pass->index);
-		pass = pass->next;
-	}
-	ft_printf("-----------------------------\n");
+	// ft_printf("-------- The stack ----------\n");
+	// pass = a.top;
+	// while (pass)
+	// {
+	// 	ft_printf("number: %d  -[-]-  ", pass->num);
+	// 	ft_printf("index: %d\n", pass->index);
+	// 	pass = pass->next;
+	// }
+	// ft_printf("-----------------------------\n");
 	// ft_printf("The size of stack a is %u\n ", a.size);
 	/*
 	// ---
