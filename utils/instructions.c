@@ -62,8 +62,8 @@ void	ft_rotate(t_stack *stack)
 	if (!stack || !stack->top)
 		return ;
 	tmp = (stack->top)->next;
-	(stack->top)->next = NULL;
 	last = ft_lstlast(stack->top);
+	(stack->top)->next = NULL;
 	last->next = stack->top;
 	stack->top = tmp;
 	if (stack->type == A)
@@ -122,9 +122,13 @@ void	ft_rev_rotate(t_stack *stack)
 			break ;
 		node = node->next;
 	}
-	tmp = (stack->top)->next;
+	tmp->next = stack->top;
 	stack->top = tmp;
 	node->next = NULL;
+	if (stack->type == A)
+		ft_printf("rra\n");
+	if (stack->type == B)
+		ft_printf("rrb\n");
 }
 /* 
 void	ft_rev_rotate(t_stack *stack)

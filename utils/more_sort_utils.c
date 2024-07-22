@@ -104,7 +104,7 @@ void	ft_range(t_stack *a, t_stack *b)
 	unsigned int	min;
 	unsigned int	max;
 	unsigned int	index;
-	t_node			*travel;
+	// t_node			*travel;
 
 	min = 0;
 	max = 8;
@@ -115,7 +115,7 @@ void	ft_range(t_stack *a, t_stack *b)
 		pass = pass->next;
 	}
 	ft_printf("---------------------------\n");
-	travel = a->top;
+	// travel = a->top;
 	while (a->size)
 	{
 		index = (a->top)->index;
