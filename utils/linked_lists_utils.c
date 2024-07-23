@@ -6,13 +6,13 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:50:13 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/21 13:45:03 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:35:56 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_node *ft_lstnew(int number)
+t_node	*ft_lstnew(int number)
 {
 	t_node	*tmp;
 
@@ -73,6 +73,4 @@ void	ft_lstadd_front(t_node **lst, t_node *new)
 		*lst = new;
 		new->next = node;
 	}
-	// new->next = *lst;
-	// *lst = new;
 }

@@ -6,14 +6,14 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:36 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/21 13:46:55 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/23 19:50:41 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdlib.h>
+# include <stdlib.h> 
 # include <stdbool.h>
 # include "../includes/ft_printf.h"
 
@@ -21,10 +21,17 @@
 # define FAILURE -1
 # define NONE -99
 
-/* STack names */
+/* Stack names */
 
 # define A 23
 # define B 24
+
+/* Range parameters */
+ 
+# define MIN_100 0
+# define MAX_100 15
+# define MIN_500 0
+# define MAX_500 35
 
 /* Errors defintions */
 
@@ -51,6 +58,8 @@ typedef struct s_stack
 	t_node			*top;
 	unsigned int	size;
 	int				type;
+	int				min_range;
+	int				max_range;
 } t_stack;
 
 /* Input validation funciton */
@@ -59,7 +68,7 @@ bool	ft_isdigit(int c);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	**ft_split(char *str);
 int		ft_atoi(char *str, int *err);
-int		validate_input(int argc, char **argv, t_stack *a);
+int	validate_input(int argc, char **argv, t_stack *stack);
 
 /* Linked lists functions */
 
@@ -74,7 +83,6 @@ void	ft_swap(t_stack *stack);
 void	ft_ss(t_stack *a, t_stack *b);
 void	ft_push(t_stack *stack1, t_stack *stack2);
 void	ft_rotate(t_stack *stack);
-void	recursive_rotate(t_stack *stack);
 void	ft_rev_rotate(t_stack *stack);
 void	ft_rr(t_stack *a, t_stack *b);
 void	ft_rrr(t_stack *a, t_stack *b);
@@ -83,10 +91,11 @@ void	ft_rrr(t_stack *a, t_stack *b);
 void	index_stack(t_stack *stack);
 
 /* Sort utils */
+bool	is_sorted(t_node **a);
 void	ft_sort(t_stack *a, t_stack *b);
-// void	mins_of_stack(t_stack *stack, int *min1, int *min2);
-void ft_sort_more(t_stack *a, t_stack *b);
-int		ft_min(t_stack *stack, int *min);
+void	ft_sort_more(t_stack *a, t_stack *b);
+unsigned int		ft_min_pos(t_stack *stack);
+unsigned int	ft_max_pos(t_stack *stack);
 void	ft_sort_five(t_stack *a, t_stack *b);
 void	ft_range(t_stack *a, t_stack *b);
 void	set_in_top(t_stack	*stack, unsigned int pos);

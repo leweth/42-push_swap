@@ -6,69 +6,30 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:45:29 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/21 16:29:45 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:37:22 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-
-static int check_case(t_node *node1, t_node *node2, t_node *node3)
+static int	check_case(t_node *node1, t_node *node2, t_node *node3)
 {
 	if (node1->num > node2->num && node2->num > node3->num)
 		return (0);
 	else if (node1->num > node2->num && node2->num < node3->num 
-			&& node3->num < node1->num)
+		&& node3->num < node1->num)
 		return (1);
 	else if (node1->num < node2->num && node2->num > node3->num
-			&& node1->num < node3->num)
+		&& node1->num < node3->num)
 		return (2);
 	else if (node1->num < node2->num && node2->num > node3->num
-			&& node1->num > node3->num)
+		&& node1->num > node3->num)
 		return (3);
 	else
 		return (4);
 }
 
-int	ft_min(t_stack *stack, int *min)
-{
-	t_node	*pass;
-	unsigned int		pos;
-	int		iters;
-
-	pass = stack->top;
-	*min = (stack->top)->num;
-	iters = 0;
-	pos = 0;
-	while (pass)
-	{
-		if (*min > pass->num)
-		{
-			*min = pass->num;
-			pos = iters;
-		}
-		iters++;
-		pass = pass->next;
-	}
-	return (pos);
-}
-/* 
-static int	get_position(t_node *node, int number)
-{
-	int	pos;
-
-	pos = 0;
-	while (node)
-	{
-		if (node->num == number)
-			return (pos);
-		pos++;
-		node = node->next;
-	}
-	return (FAILURE);
-} */
-
-void set_in_top(t_stack	*stack, unsigned int pos) // it should take the min
+void	set_in_top(t_stack	*stack, unsigned int pos)
 {
 	unsigned int	iters;
 
@@ -118,16 +79,16 @@ static void	ft_sort_three(t_stack *stack)
 
 void ft_sort_five(t_stack *a, t_stack *b)
 {
-	int	min;
 	int	pos;
 
-	pos = ft_min(a, &min);
+	pos = ft_min_pos(a);
 	set_in_top(a, pos);
 	ft_push(b, a);
-	pos = ft_min(a, &min);
+	pos = ft_min_pos(a);
 	set_in_top(a, pos);
 	ft_push(b, a);
-	ft_sort_three(a);
+	if (!is_sorted(&(a->top)))
+		ft_sort_three(a);
 	ft_push(a, b);
 	ft_push(a, b);
 }

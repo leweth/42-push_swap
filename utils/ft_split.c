@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:06:44 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/16 18:22:11 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/23 17:25:43 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	ft_clean(char **ptr, int count)
 	}
 	free(ptr);
 }
-// #include <stdio.h>
+
 static int	ft_fill(char **ptr, char *str, int count)
 {
 	int	i;
@@ -90,21 +90,3 @@ char	**ft_split(char *str)
 	ft_fill(ptr, str, count);
 	return (ptr);
 }
-
-/* 
-void leaks_check()
-{
-	system("leaks run");
-	printf("-------------------------------------------------------\n");
-}
-
-#include <stdio.h>
-int main()
-{
-	atexit(leaks_check);
-	char **str = ft_split("^ ^ ^ --h^^^	^ ^^^^		f ");
-	while (*str)
-		printf("|%s|\n", *(str++));
-	printf("-------------------------------------------------------\n");
-}
- */

@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:06:50 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/20 15:26:16 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:19:26 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,14 @@ static bool	is_duplicate(t_node **a, int number)
 	pass = *a;
 	while (pass)
 	{
-		// ft_printf("pass->num: %d\n", pass->num);
-		// ft_printf("number: %d\n", number);
 		if (pass->num == number)
 			return (true);
-	// ft_printf("DAZ?\n");
 		pass = pass->next;
 	}
 	return (false);
 }
 
-static bool	is_sorted(t_node **a)
+bool	is_sorted(t_node **a)
 {
 	int		prev;
 	t_node	*pass;
@@ -67,14 +64,37 @@ static bool	is_sorted(t_node **a)
 	return (true);
 }
 
+static int	add_nodes(t_stack *stack, char **strs)
+{
+	t_node	*node;
+	int	j;
+	int	num;
+	int err;
+
+	j = 0;
+	err = SUCCESS;
+	while (strs[j])
+	{
+		num = ft_atoi(strs[j], &err);
+		if (err < 0)
+	 		return (clean_strs(&strs), ft_lstclear(&(stack->top)), err);
+		if (is_duplicate(&(stack->top), num))
+			return (err = DUPLICATE_FOUND, clean_strs(&strs), ft_lstclear(&(stack->top)), err);
+		node = ft_lstnew(num);
+		if (!node)
+			return (err = FAILED_MALLOC_ERR, clean_strs(&strs), ft_lstclear(&(stack->top)), err);
+		ft_lstadd_back(&(stack->top), node);
+		(stack->size)++;
+		j++;
+	}
+	return (err);
+}
+
 int	validate_input(int argc, char **argv, t_stack *stack)
 {
 	int		err;
 	int		i;
 	char	**strs;
-	t_node	*node;
-	int		j;
-	int		num;
 
 	err = 0;
 	if (argc == 1)
@@ -83,31 +103,13 @@ int	validate_input(int argc, char **argv, t_stack *stack)
 	while (i < argc)
 	{
 		strs = ft_split(argv[i]);
-		// for (int a = 0; strs[a]; a++)
-		// 	ft_printf("|%s|\n", strs[a]);
 		if (!strs)
 			return (FAILED_MALLOC_ERR);
 		if (!(*strs))
 			return (ft_lstclear(&(stack->top)), free(strs), strs= NULL, EMPTY_PARAMETERS);
-		j = 0;
-		while (strs[j])
-		{
-		// ft_printf("dfjsdkjfd------1\n");
-			num = ft_atoi(strs[j], &err);
-			// ft_printf("The number  after atoi: %d\n", num);
-			if (err < 0)
-		 		return (clean_strs(&strs), ft_lstclear(&(stack->top)), err);
-		// ft_printf("dfjsdkjfd------2\n");
-			if (is_duplicate(&(stack->top), num))
-				return (err = DUPLICATE_FOUND, clean_strs(&strs), ft_lstclear(&(stack->top)), err);				
-		// ft_printf("dfjsdkjfd------3\n");
-			node = ft_lstnew(num);
-			if (!node)
-				return (err = FAILED_MALLOC_ERR, clean_strs(&strs), ft_lstclear(&(stack->top)), err);
-			ft_lstadd_back(&(stack->top), node);
-			(stack->size)++;
-			j++;
-		}
+		err = add_nodes(stack, strs);
+		if (err < 0)
+			return (err);
 		clean_strs(&strs);
 		i++;
 	}

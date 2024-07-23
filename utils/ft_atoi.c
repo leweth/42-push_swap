@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 17:52:43 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/18 10:10:26 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:32:25 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ static bool	ft_isspace(char c)
 static int	ft_convert(char *str, long long int *conv, size_t *i, int sign)
 {
 	while (ft_isdigit(str[*i]))
-	{	
+	{
 		*conv = *conv * 10 + str[(*i)++] - '0';
 		if (*conv > 2147483647 && sign == 1)
 			return (NUMBER_EXCCED_INT_MAX);
 		else if (*conv > 2147483648 && sign == -1)
 			return (NUMBER_LOWER_THAN_INT_MIN);
-		
 	}
 	return (SUCCESS);
 }
