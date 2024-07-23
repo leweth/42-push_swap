@@ -19,8 +19,8 @@ $(NAME): $(OBJS)
 	${CC} ${CFLAGS} $(OBJS) lib/printf/libftprintf.a -o ${NAME}
 	@echo "\033[1;32mTarget Built Successfully!\033[0m"
 
-%.o: %.c includes/push_swap.h #includes/push_swap.h
-	$(CC) $(CFLAGS) -Iincludes $< -o $@
+%.o: %.c includes/push_swap.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 printf:
 	@echo "\033[1;33mBuilding printf...\033[0m"
