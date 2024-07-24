@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:27 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/23 19:55:26 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/24 19:39:40 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@
 // 	ft_printf("------------------------- END ------------------------------\n");
 // }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	// atexit(leaks_check);
-	t_stack			a;
-	t_stack			b;
-	int				err;
+	t_stack	a;
+	t_stack	b;
+	int		err;
 
-	a = (t_stack) {NULL, 0, A, 0, 20};
-	b = (t_stack) {NULL, 0, B, 0, 20};
+	a = (t_stack){NULL, 0, A, 0, 20};
+	b = (t_stack){NULL, 0, B, 0, 20};
 	err = validate_input(argc, argv, &a);
 	if (err == NO_PARAMETERS || err == ALREADY_SORTED)
 		exit(EXIT_SUCCESS);

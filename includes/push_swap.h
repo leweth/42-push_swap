@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:14:36 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/23 19:50:41 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/23 21:23:26 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define B 24
 
 /* Range parameters */
- 
+
 # define MIN_100 0
 # define MAX_100 15
 # define MIN_500 0
@@ -51,7 +51,7 @@ typedef struct s_node
 	int				num;
 	unsigned int	index;
 	struct s_node	*next;
-} t_node;
+}			t_node;
 
 typedef struct s_stack
 {
@@ -60,44 +60,44 @@ typedef struct s_stack
 	int				type;
 	int				min_range;
 	int				max_range;
-} t_stack;
+}			t_stack;
 
 /* Input validation funciton */
 
-bool	ft_isdigit(int c);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-char	**ft_split(char *str);
-int		ft_atoi(char *str, int *err);
-int	validate_input(int argc, char **argv, t_stack *stack);
+bool			ft_isdigit(int c);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
+char			**ft_split(char *str);
+int				ft_atoi(char *str, int *err);
+int				validate_input(int argc, char **argv, t_stack *stack);
 
 /* Linked lists functions */
 
-t_node *ft_lstnew(int number);
-t_node	*ft_lstlast(t_node *lst);
-void	ft_lstadd_front(t_node **lst, t_node *new);
-void	ft_lstadd_back(t_node **lst, t_node *node);
-void	ft_lstclear(t_node **lst);
+t_node			*ft_lstnew(int number);
+t_node			*ft_lstlast(t_node *lst);
+void			ft_lstadd_front(t_node **lst, t_node *new);
+void			ft_lstadd_back(t_node **lst, t_node *node);
+void			ft_lstclear(t_node **lst);
 
 /* Instructions implementaion functions */
-void	ft_swap(t_stack *stack);
-void	ft_ss(t_stack *a, t_stack *b);
-void	ft_push(t_stack *stack1, t_stack *stack2);
-void	ft_rotate(t_stack *stack);
-void	ft_rev_rotate(t_stack *stack);
-void	ft_rr(t_stack *a, t_stack *b);
-void	ft_rrr(t_stack *a, t_stack *b);
+void			ft_swap(t_stack *stack);
+void			ft_ss(t_stack *a, t_stack *b);
+void			ft_push(t_stack *stack1, t_stack *stack2);
+void			ft_rotate(t_stack *stack);
+void			ft_rev_rotate(t_stack *stack);
+void			ft_rr(t_stack *a, t_stack *b);
+void			ft_rrr(t_stack *a, t_stack *b);
 
 /* Indexing utils */
-void	index_stack(t_stack *stack);
+void			index_stack(t_stack *stack);
 
 /* Sort utils */
-bool	is_sorted(t_node **a);
-void	ft_sort(t_stack *a, t_stack *b);
-void	ft_sort_more(t_stack *a, t_stack *b);
-unsigned int		ft_min_pos(t_stack *stack);
+bool			is_sorted(t_node **a);
+void			ft_sort(t_stack *a, t_stack *b);
+void			ft_sort_more(t_stack *a, t_stack *b);
+unsigned int	ft_min_pos(t_stack *stack);
 unsigned int	ft_max_pos(t_stack *stack);
-void	ft_sort_five(t_stack *a, t_stack *b);
-void	ft_range(t_stack *a, t_stack *b);
-void	set_in_top(t_stack	*stack, unsigned int pos);
+void			ft_sort_five(t_stack *a, t_stack *b);
+void			ft_range(t_stack *a, t_stack *b);
+void			set_in_top(t_stack	*stack, unsigned int pos);
 
 #endif

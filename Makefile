@@ -29,11 +29,11 @@ printf:
 clean:
 	@echo "\033[1;33mRemoving Object files...\033[0m"
 	make -C lib/printf clean
-	rm ${OBJS}
+	rm -rf ${OBJS}
 
 fclean: clean
 	@echo "\033[1;33mRemoving libraries and program...\033[0m"
-	rm ${NAME}
+	rm -rf ${NAME}
 	make -C lib/printf fclean
 
 re: fclean all

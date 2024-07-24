@@ -20,8 +20,10 @@ ARGS7="215956118 215201580 214633928 213890945 213646194 213367706 212989675 211
 
 
 
-./push_swap $ARGS5 | tests/checkers/checker_Mac $ARGS5
+# ./push_swap $ARGS4 | tests/checkers/checker_Mac $ARGS4
 
 
-./push_swap $ARGS5 | wc -l
+# ./push_swap $ARGS4 | wc -l
+
+./push_swap $ARGS4
 

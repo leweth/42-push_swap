@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:06:50 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/23 18:19:26 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/23 21:29:22 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	clean_strs(char ***strs)
 	i = 0;
 	ptrs = *strs;
 	while (ptrs[i])
-	{	
+	{
 		free(ptrs[i]);
 		ptrs[i] = NULL;
 		i++;
@@ -67,9 +67,9 @@ bool	is_sorted(t_node **a)
 static int	add_nodes(t_stack *stack, char **strs)
 {
 	t_node	*node;
-	int	j;
-	int	num;
-	int err;
+	int		j;
+	int		num;
+	int		err;
 
 	j = 0;
 	err = SUCCESS;
@@ -77,12 +77,14 @@ static int	add_nodes(t_stack *stack, char **strs)
 	{
 		num = ft_atoi(strs[j], &err);
 		if (err < 0)
-	 		return (clean_strs(&strs), ft_lstclear(&(stack->top)), err);
+			return (clean_strs(&strs), ft_lstclear(&(stack->top)), err);
 		if (is_duplicate(&(stack->top), num))
-			return (err = DUPLICATE_FOUND, clean_strs(&strs), ft_lstclear(&(stack->top)), err);
+			return (err = DUPLICATE_FOUND, clean_strs(&strs), 
+				ft_lstclear(&(stack->top)), err);
 		node = ft_lstnew(num);
 		if (!node)
-			return (err = FAILED_MALLOC_ERR, clean_strs(&strs), ft_lstclear(&(stack->top)), err);
+			return (err = FAILED_MALLOC_ERR, clean_strs(&strs), 
+				ft_lstclear(&(stack->top)), err);
 		ft_lstadd_back(&(stack->top), node);
 		(stack->size)++;
 		j++;
@@ -106,7 +108,8 @@ int	validate_input(int argc, char **argv, t_stack *stack)
 		if (!strs)
 			return (FAILED_MALLOC_ERR);
 		if (!(*strs))
-			return (ft_lstclear(&(stack->top)), free(strs), strs= NULL, EMPTY_PARAMETERS);
+			return (ft_lstclear(&(stack->top)), free(strs), strs = NULL, 
+				EMPTY_PARAMETERS);
 		err = add_nodes(stack, strs);
 		if (err < 0)
 			return (err);

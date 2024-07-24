@@ -6,7 +6,7 @@
 /*   By: mben-yah <mben-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:45:29 by mben-yah          #+#    #+#             */
-/*   Updated: 2024/07/23 18:37:22 by mben-yah         ###   ########.fr       */
+/*   Updated: 2024/07/23 21:27:28 by mben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	set_in_top(t_stack	*stack, unsigned int pos)
 	}
 }
 
-
 static void	ft_sort_three(t_stack *stack)
 {
 	t_node	*node1;
@@ -77,7 +76,7 @@ static void	ft_sort_three(t_stack *stack)
 		ft_swap(stack);
 }
 
-void ft_sort_five(t_stack *a, t_stack *b)
+void	ft_sort_five(t_stack *a, t_stack *b)
 {
 	int	pos;
 
